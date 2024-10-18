@@ -48,7 +48,7 @@ namespace JoseCerezo_Taller1.Controllers
         // GET: Equipoes/Create
         public IActionResult Create()
         {
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Id");
+            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace JoseCerezo_Taller1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -82,7 +82,7 @@ namespace JoseCerezo_Taller1.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -118,7 +118,7 @@ namespace JoseCerezo_Taller1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Id", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 
