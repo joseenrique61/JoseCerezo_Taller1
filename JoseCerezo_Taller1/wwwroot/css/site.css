@@ -35,6 +35,6 @@ img {
     background-color: #004E64;
 }
 
-/*.card-container {
-    padding: 10px;
-}*/
+td {
+    vertical-align: middle;
+}

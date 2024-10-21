@@ -1,53 +1,63 @@
 ﻿@model IEnumerable<JoseCerezo_Taller1.Models.Estadio>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Estadios";
 }
 
-<h1>Index</h1>
+<h1 class="mt-4">@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ciudad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capacidad)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ciudad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacidad)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+<a class="btn btn-primary my-3" asp-action="Create">Registrar nuevo estadio</a>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Nombre)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Direccion)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Ciudad)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Capacidad)
+			</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Nombre)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Direccion)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Ciudad)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Capacidad)
+				</td>
+				<td>
+					<a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">
+						<i class="bi-search"></i>
+						Detalles
+					</a>
+					<a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">
+						<i class="bi-pencil-square"></i>
+						Editar
+					</a>
+					<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+						<i class="bi-trash"></i>
+						Borrar
+					</a>
+				</td>
+
+			</tr>
+		}
+	</tbody>
 </table>
