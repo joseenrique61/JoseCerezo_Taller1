@@ -20,5 +20,8 @@ namespace JoseCerezo_Taller1.Models
         public int IdEstadio { get; set; }
 
         public Estadio? Estadio { get; set; }
+
+
+        public ICollection<Jugador>? Jugadores { get; } = [];
     }
 }

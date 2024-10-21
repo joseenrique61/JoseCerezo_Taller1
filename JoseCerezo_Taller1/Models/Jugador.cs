@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoseCerezo_Taller1.Models
@@ -14,6 +15,7 @@ namespace JoseCerezo_Taller1.Models
 
         public int Edad {  get; set; }
 
+        [DisplayName("Equipo")]
         [ForeignKey(nameof(Equipo))]
         public int IdEquipo {  get; set; }
     

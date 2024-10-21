@@ -50,7 +50,7 @@ namespace JoseCerezo_Taller1.Migrations
 
                     b.HasIndex("IdEstadio");
 
-                    b.ToTable("Equipo");
+                    b.ToTable("Equipo", (string)null);
                 });
 
             modelBuilder.Entity("JoseCerezo_Taller1.Models.Estadio", b =>
@@ -78,7 +78,7 @@ namespace JoseCerezo_Taller1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Estadio");
+                    b.ToTable("Estadio", (string)null);
                 });
 
             modelBuilder.Entity("JoseCerezo_Taller1.Models.Jugador", b =>
@@ -107,7 +107,7 @@ namespace JoseCerezo_Taller1.Migrations
 
                     b.HasIndex("IdEquipo");
 
-                    b.ToTable("Jugador");
+                    b.ToTable("Jugador", (string)null);
                 });
 
             modelBuilder.Entity("JoseCerezo_Taller1.Models.Equipo", b =>

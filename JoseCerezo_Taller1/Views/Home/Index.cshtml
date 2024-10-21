@@ -1,8 +1,96 @@
-﻿@{
+﻿@model JoseCerezo_Taller1.Models.HomeInfoModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<div id="carousel" class="carousel slide" style="height:500px">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="~/carousel_images/665383bedfccc.jpeg" class="d-block w-100">
+			</div>
+			<div class="carousel-item">
+				<img src="~/carousel_images/Liga-pro.large.jpg" class="d-block w-100">
+			</div>
+			<div class="carousel-item">
+				<img src="~/carousel_images/ligapro.jpeg" class="d-block w-100">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+	<!--Tag section generado con IA-->
+	<section class="text-dark text-center py-4">
+		<div class="container">
+			<h1 class="display-4">¡Bienvenido a la Liga Pro 2024 de Ecuador!</h1>
+			<p class="lead">Sigue toda la emoción del fútbol ecuatoriano.</p>
+		</div>
+	</section>
+
+	@if (Model.Estadios.Count > 0)
+	{
+		<h3 class="display-6 fw-bold">Estadios</h3>
+		<br/>
+		<div class="row row-cols-4 g-4">
+			@foreach (Estadio estadio in Model.Estadios)
+			{
+				<div>
+					<div class="card col">
+						<div class="card-body">
+							<h5 class="card-title">@estadio.Nombre</h5>
+							<p class="card-text">@estadio.Direccion, @estadio.Ciudad</p>
+							<p class="card-text">Capacidad para @estadio.Capacidad personas</p>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+
+	<br />
+	<br />
+
+	@if (Model.Equipos.Count > 0)
+	{
+		<h3 class="display-6 fw-bold">Equipos</h3>
+		<br/>
+
+		<div class="text-start">
+			<ul class="list-group bg-light">
+				@foreach (Equipo equipo in Model.Equipos)
+				{
+					<li class="list-group-item">
+						<h5 class="p-1"><strong>@equipo.Nombre</strong></h5>
+						<ul class="list-group pb-1">
+							<li class="list-group-item">Títulos: @equipo.Titulos</li>
+							<li class="list-group-item">@(equipo.AceptaExtranjeros ? "Sí" : "No") acepta extranjeros</li>
+							<li class="list-group-item">Ciudad: @equipo.Ciudad</li>
+							<li class="list-group-item">Estadio: @equipo.Estadio!.Nombre</li>
+
+							@if (equipo.Jugadores!.Count > 0)
+							{
+								<li class="list-group-item">
+									Jugadores:
+									<ol class="pt-1">
+										@foreach (Jugador jugador in equipo.Jugadores!)
+										{
+											<li>@jugador.Nombre, @jugador.Posicion</li>
+										}
+									</ol>
+								</li>
+							}
+						</ul>
+					</li>
+				}
+			</ul>
+		</div>
+	}
 </div>
