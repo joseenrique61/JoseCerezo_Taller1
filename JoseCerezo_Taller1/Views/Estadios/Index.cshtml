@@ -51,13 +51,35 @@
 						<i class="bi-pencil-square"></i>
 						Editar
 					</a>
-					<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+					<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal1" data-bs-id="@item.Id">
 						<i class="bi-trash"></i>
 						Borrar
-					</a>
+					</button>
 				</td>
 
 			</tr>
 		}
 	</tbody>
 </table>
+
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="modal1Label">¿Desea borrar este estadio?</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>Cualquier equipo asociado a este estadio se eliminará, y con ello sus jugadores. Esta acción no es reversible.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+				<form id="eliminarForm" asp-action="Delete" method="post">
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -116,24 +116,6 @@ namespace JoseCerezo_Taller1.Controllers
             return View(estadio);
         }
 
-        // GET: Estadios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var estadio = await _context.Estadio
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (estadio == null)
-            {
-                return NotFound();
-            }
-
-            return View(estadio);
-        }
-
         // POST: Estadios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
