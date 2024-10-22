@@ -1,4 +1,16 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function() {
+    // Parte de este código pertenece a la documentación oficial de Bootstrap para Modal. https://getbootstrap.com/docs/5.3/components/modal/.
+    const modal1 = document.getElementById('modal1')
+    if (modal1) {
+        modal1.addEventListener('show.bs.modal', event => {
+            // Botón que llamó al modal.
+            const button = event.relatedTarget
+            
+            // Obtiene la información de Id del item.
+            const id = button.getAttribute('data-bs-id')
 
-// Write your JavaScript code.
+            const eliminarForm = document.getElementById("eliminarForm")
+            eliminarForm.setAttribute("action", eliminarForm.getAttribute("action") + "/" + id)
+        })
+    }
+})
