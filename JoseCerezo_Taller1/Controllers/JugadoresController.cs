@@ -19,11 +19,29 @@ namespace JoseCerezo_Taller1.Controllers
             _context = context;
         }
 
-        // GET: Jugadores
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string equipoFiltro)
         {
-            var joseCerezo_Taller1Context = _context.Jugador.Include(j => j.Equipo);
-            return View(await joseCerezo_Taller1Context.ToListAsync());
+            IQueryable<JugadorModel> jugadores = _context.Jugador.Include(j => j.Equipo);
+
+            if (!string.IsNullOrEmpty(equipoFiltro))
+            {
+                jugadores = jugadores.Where(j => j.Equipo!.Nombre == equipoFiltro);
+            }
+
+            // Sintaxis con cláusulas "from" para realizar queries. En este caso, está seleccionando el nombre de los equipos que se encuentran dentro del contexto. 
+            IQueryable<string> equipos = from e in _context.Equipo
+                                         orderby e.Nombre
+                                         select e.Nombre;
+
+            // Se usa otro modelo (JugadoresEquipoModel en vez de JugadoresModel) para poder obtener una lista de equipos y filtrar por equipo.
+            JugadoresEquiposModel jugadoresEquiposModel = new()
+            {
+                Jugadores = await jugadores.ToListAsync(),
+                Equipos = new SelectList(equipos),
+                EquipoFiltro = equipoFiltro
+            };
+
+            return View(jugadoresEquiposModel);
         }
 
         // GET: Jugadores/Details/5
@@ -57,7 +75,7 @@ namespace JoseCerezo_Taller1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Posicion,Edad,IdEquipo")] Jugador jugador)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Posicion,Edad,IdEquipo")] JugadorModel jugador)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +109,7 @@ namespace JoseCerezo_Taller1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Posicion,Edad,IdEquipo")] Jugador jugador)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Posicion,Edad,IdEquipo")] JugadorModel jugador)
         {
             if (id != jugador.Id)
             {

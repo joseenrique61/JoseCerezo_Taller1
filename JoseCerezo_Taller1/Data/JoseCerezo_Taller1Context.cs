@@ -14,8 +14,8 @@ namespace JoseCerezo_Taller1.Data
         {
         }
 
-        public DbSet<JoseCerezo_Taller1.Models.Equipo> Equipo { get; set; } = default!;
-        public DbSet<JoseCerezo_Taller1.Models.Jugador> Jugador { get; set; } = default!;
-        public DbSet<JoseCerezo_Taller1.Models.Estadio> Estadio { get; set; } = default!;
+        public DbSet<JoseCerezo_Taller1.Models.EquipoModel> Equipo { get; set; } = default!;
+        public DbSet<JoseCerezo_Taller1.Models.JugadorModel> Jugador { get; set; } = default!;
+        public DbSet<JoseCerezo_Taller1.Models.EstadioModel> Estadio { get; set; } = default!;
     }
 }

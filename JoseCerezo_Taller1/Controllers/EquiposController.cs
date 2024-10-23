@@ -48,7 +48,7 @@ namespace JoseCerezo_Taller1.Controllers
         // GET: Equipoes/Create
         public IActionResult Create()
         {
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre");
+            ViewData["IdEstadio"] = new SelectList(_context.Set<EstadioModel>(), "Id", "Nombre");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace JoseCerezo_Taller1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] EquipoModel equipo)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace JoseCerezo_Taller1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<EstadioModel>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -82,7 +82,7 @@ namespace JoseCerezo_Taller1.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<EstadioModel>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 
@@ -91,7 +91,7 @@ namespace JoseCerezo_Taller1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Ciudad,Titulos,AceptaExtranjeros,IdEstadio")] EquipoModel equipo)
         {
             if (id != equipo.Id)
             {
@@ -118,7 +118,7 @@ namespace JoseCerezo_Taller1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Nombre", equipo.IdEstadio);
+            ViewData["IdEstadio"] = new SelectList(_context.Set<EstadioModel>(), "Id", "Nombre", equipo.IdEstadio);
             return View(equipo);
         }
 

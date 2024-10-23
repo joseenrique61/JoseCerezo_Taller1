@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoseCerezo_Taller1.Models
 {
-    public class Equipo
+    public class EquipoModel
     {
         [Key]
         public int Id { get; set; }
@@ -22,13 +22,14 @@ namespace JoseCerezo_Taller1.Models
         [DisplayName("Acepta extranjeros")]
         public bool AceptaExtranjeros {  get; set; }
 
+        [Required]
         [DisplayName("Estadio")]
         [ForeignKey(nameof(Estadio))]
         public int IdEstadio { get; set; }
 
-        public Estadio? Estadio { get; set; }
+        public EstadioModel? Estadio { get; set; }
 
 
-        public ICollection<Jugador>? Jugadores { get; } = [];
+        public ICollection<JugadorModel>? Jugadores { get; } = [];
     }
 }

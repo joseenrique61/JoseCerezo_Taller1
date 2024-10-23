@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JoseCerezo_Taller1.Models.Jugador>
+﻿@model JoseCerezo_Taller1.Models.JugadoresEquiposModel
 
 @{
 	ViewData["Title"] = "Jugadores";
@@ -8,26 +8,37 @@
 
 <a class="btn btn-success my-3" asp-action="Create"><i class="bi bi-plus-square"></i> Registrar nuevo jugador</a>
 
+<form asp-action="Index">
+	<div class="row mb-3">
+		<p class="col-auto my-auto">Filtrar por equipo: </p>
+		<select asp-for="EquipoFiltro" asp-items="Model.Equipos" class="col-auto me-3"></select>
+		<button type="submit" class="btn btn-outline-primary col-auto">Aplicar</button>
+	</div>
+</form>
+
 <table class="table table-bordered table-striped">
 	<thead>
+		@{
+			JugadorModel jugador = new();
+		}
 		<tr>
 			<th>
-				@Html.DisplayNameFor(model => model.Nombre)
+				@Html.DisplayNameFor(model => jugador.Nombre)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Posicion)
+				@Html.DisplayNameFor(model => jugador.Posicion)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Edad)
+				@Html.DisplayNameFor(model => jugador.Edad)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Equipo)
+				@Html.DisplayNameFor(model => jugador.Equipo)
 			</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
+		@foreach (var item in Model.Jugadores)
 		{
 			<tr>
 				<td>

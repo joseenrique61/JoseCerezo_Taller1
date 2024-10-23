@@ -40,7 +40,7 @@
 		<h3 class="display-6 fw-bold">Estadios</h3>
 		<br/>
 		<div class="row row-cols-4 g-4">
-			@foreach (Estadio estadio in Model.Estadios)
+			@foreach (EstadioModel estadio in Model.Estadios)
 			{
 				<div>
 					<div class="card col">
@@ -65,7 +65,7 @@
 
 		<div class="text-start">
 			<ul class="list-group bg-light">
-				@foreach (Equipo equipo in Model.Equipos)
+				@foreach (EquipoModel equipo in Model.Equipos)
 				{
 					<li class="list-group-item">
 						<h5 class="p-1"><strong>@equipo.Nombre</strong></h5>
@@ -80,7 +80,7 @@
 								<li class="list-group-item">
 									Jugadores:
 									<ol class="pt-1">
-										@foreach (Jugador jugador in equipo.Jugadores!)
+										@foreach (JugadorModel jugador in equipo.Jugadores!)
 										{
 											<li>@jugador.Nombre, @jugador.Posicion</li>
 										}

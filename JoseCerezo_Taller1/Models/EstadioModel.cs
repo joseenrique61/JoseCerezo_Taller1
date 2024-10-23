@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JoseCerezo_Taller1.Models
 {
-    public class Estadio
+    public class EstadioModel
     {
         [Key]
         public int Id { get; set; }

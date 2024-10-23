@@ -1,4 +1,4 @@
-﻿@model JoseCerezo_Taller1.Models.Equipo
+﻿@model JoseCerezo_Taller1.Models.EquipoModel
 
 @{
     ViewData["Title"] = "Crear equipo";
@@ -46,6 +46,7 @@
                 <label asp-for="IdEstadio" class="control-label col-2 col-form-label"></label>
                 <div class="col-10">
                     <select asp-for="IdEstadio" class ="form-control" asp-items="ViewBag.IdEstadio"></select>
+                    <span asp-validation-for="IdEstadio" class="text-danger"></span>
                 </div>
             </div>
             <div class="row justify-content-center mt-5">

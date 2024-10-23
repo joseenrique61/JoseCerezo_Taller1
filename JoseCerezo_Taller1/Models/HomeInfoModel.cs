@@ -2,8 +2,8 @@
 {
 	public class HomeInfoModel
 	{
-		public List<Equipo> Equipos { get; set; }
+		public List<EquipoModel> Equipos { get; set; }
 
-		public List<Estadio> Estadios { get; set; }
+		public List<EstadioModel> Estadios { get; set; }
 	}
 }

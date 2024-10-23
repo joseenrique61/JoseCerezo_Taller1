@@ -22,7 +22,7 @@ namespace JoseCerezo_Taller1.Controllers
         {
             HomeInfoModel homeInfoModel = new()
             {
-                Equipos = _context.Equipo.Include(nameof(Equipo.Jugadores)).ToList(),
+                Equipos = _context.Equipo.Include(nameof(EquipoModel.Jugadores)).ToList(),
                 Estadios = _context.Estadio.ToList()
             };
 

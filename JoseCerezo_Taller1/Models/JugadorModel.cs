@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JoseCerezo_Taller1.Models
 {
-    public class Jugador
+    public class JugadorModel
     {
         [Key]
         public int Id { get; set; }
@@ -19,10 +19,11 @@ namespace JoseCerezo_Taller1.Models
         [Required]
         public int Edad {  get; set; }
 
+        [Required]
         [DisplayName("Equipo")]
         [ForeignKey(nameof(Equipo))]
         public int IdEquipo {  get; set; }
     
-        public Equipo? Equipo { get; set; }
+        public EquipoModel? Equipo { get; set; }
     }
 }
